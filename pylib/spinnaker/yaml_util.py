@@ -58,7 +58,7 @@ class YamlBindings(object):
       return default
 
   def import_dict(self, d):
-    if dict is not None:
+    if dict is not None and len(dict) > 0:
       for name,value in d.items():
         self.__update_field(name, value, self.__map)
 
