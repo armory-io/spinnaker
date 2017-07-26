@@ -1,13 +1,23 @@
-We prefer small, well tested pull requests.
+# Description of what was changed
 
-Please refer to [Contributing to Spinnaker](http://spinnaker.io/online_docs/community/contributing_guidelines.html) and [On Collaborative Development](http://spinnaker.io/documentation/collab_dev.html).
 
-When filling out a pull request, please consider the following:
 
-* Provide a descriptive title for your changes.
-* If it fixes a bug or resolves a feature request, be sure to link to that issue.
-* Add inline code comments to changes that might not be obvious.
-* Squash your commits as you keep adding changes.
-* Add a comment to @spinnaker/reviewers for review if your issue has been outstanding for more than 3 days. 
+# Breaking changes
+- Something to watch out for.
 
-Note that we are unlikely to accept pull requests that add features without prior discussion. The best way to propose a feature is to open an issue first and discuss your ideas there before implementing them.
+
+
+# Definition of Done
+There is not a hard requirement on what you need to do since it will vary heavily by task. But by saying that a task is complete you are saying that you have sufficient systems in place to guarantee what you have done.
+
+- [ ] some level of unit/integration tests
+- [ ] some level of monitoring links:
+- [ ] some level of alerts, links:
+- [ ] some level of documentation, links:
+
+
+
+# Secondary Impacts
+- [ ] Our docs have been updated or they don't need to be.
+- [ ] Our readmes have been updated or they don't need to be
+- [ ] Do our customers need to be notified?
