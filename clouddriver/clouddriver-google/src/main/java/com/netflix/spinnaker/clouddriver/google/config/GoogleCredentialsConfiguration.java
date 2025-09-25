@@ -40,8 +40,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 @Configuration
+@Import(GoogleCredentialsConfig.class)
 public class GoogleCredentialsConfiguration {
   private static final Logger log = LoggerFactory.getLogger(GoogleCredentialsConfiguration.class);
 
@@ -127,5 +129,10 @@ public class GoogleCredentialsConfiguration {
   public CredentialsRepository<GoogleNamedAccountCredentials> googleCredentialsRepository(
       CredentialsLifecycleHandler<GoogleNamedAccountCredentials> eventHandler) {
     return new MapBackedCredentialsRepository<>(GoogleCloudProvider.getID(), eventHandler);
+  }
+
+  @Bean
+  public GoogleCredentialsConfig googleCredentialsConfig() {
+    return new GoogleCredentialsConfig();
   }
 }

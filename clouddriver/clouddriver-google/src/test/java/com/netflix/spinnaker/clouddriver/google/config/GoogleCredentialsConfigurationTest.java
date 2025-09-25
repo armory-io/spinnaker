@@ -50,6 +50,11 @@ public class GoogleCredentialsConfigurationTest {
     runner.run(ctx -> assertThat(ctx).hasSingleBean(CredentialsRepository.class));
   }
 
+  @Test
+  void testGoogleCredentialsConfigBeanIsPresent() {
+    runner.run(ctx -> assertThat(ctx).hasSingleBean(GoogleCredentialsConfig.class));
+  }
+
   static class TestConfiguration {
     @Bean
     ObjectMapper getObjectMapper() {
