@@ -18,6 +18,8 @@ package com.netflix.spinnaker.clouddriver.google.config
 
 import com.netflix.spinnaker.clouddriver.consul.config.ConsulConfig
 import com.netflix.spinnaker.clouddriver.googlecommon.config.GoogleCommonManagedAccount
+import com.fasterxml.jackson.annotation.JsonTypeName
+import com.netflix.spinnaker.clouddriver.security.AccessControlledAccountDefinition
 import groovy.transform.Canonical
 import groovy.transform.ToString
 import org.springframework.boot.context.properties.NestedConfigurationProperty
@@ -25,6 +27,8 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty
 class GoogleConfigurationProperties {
   public static final int ASYNC_OPERATION_TIMEOUT_SECONDS_DEFAULT = 300
   public static final int ASYNC_OPERATION_MAX_POLLING_INTERVAL_SECONDS = 8
+  
+  String defaultNamingStrategy = "default"
 
   /**
    * health check related config settings
@@ -38,7 +42,8 @@ class GoogleConfigurationProperties {
   }
 
   @ToString(includeNames = true)
-  static class ManagedAccount extends GoogleCommonManagedAccount {
+  @JsonTypeName("google")
+  static class ManagedAccount extends GoogleCommonManagedAccount implements AccessControlledAccountDefinition {
     boolean alphaListed
     List<String> imageProjects
     ConsulConfig consul
@@ -47,7 +52,7 @@ class GoogleConfigurationProperties {
     // defaultRegions if left unspecified. An empty list will index no regions.
     List<String> regions
     boolean required
-    String namingStrategy = "gceAnnotations"
+    String namingStrategy
   }
 
   List<ManagedAccount> accounts = []
