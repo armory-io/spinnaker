@@ -16,8 +16,10 @@
 
 package com.netflix.spinnaker.clouddriver.azure.config
 
+import com.fasterxml.jackson.annotation.JsonTypeName
 import com.netflix.spinnaker.clouddriver.azure.resources.vmimage.model.AzureCustomImageStorage
 import com.netflix.spinnaker.clouddriver.azure.resources.vmimage.model.AzureVMImage
+import com.netflix.spinnaker.credentials.definition.CredentialsDefinition
 import com.netflix.spinnaker.fiat.model.resources.Permissions
 import groovy.transform.Canonical
 import groovy.transform.ToString
@@ -26,7 +28,9 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty
 class AzureConfigurationProperties {
 
   @ToString(includeNames = true)
-  static class ManagedAccount {
+  @Canonical
+  @JsonTypeName("azure")
+  static class ManagedAccount implements CredentialsDefinition {
     String name
     String environment
     String accountType
@@ -34,6 +38,7 @@ class AzureConfigurationProperties {
     String appKey
     String tenantId
     String subscriptionId
+    String namingStrategy
     List<String> regions
     List<AzureVMImage> vmImages
     List<AzureCustomImageStorage> customImages
