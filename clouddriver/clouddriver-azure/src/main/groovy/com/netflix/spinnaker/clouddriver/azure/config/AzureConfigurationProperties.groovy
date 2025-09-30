@@ -16,9 +16,9 @@
 
 package com.netflix.spinnaker.clouddriver.azure.config
 
+import com.fasterxml.jackson.annotation.JsonTypeName
 import com.netflix.spinnaker.clouddriver.azure.resources.vmimage.model.AzureCustomImageStorage
 import com.netflix.spinnaker.clouddriver.azure.resources.vmimage.model.AzureVMImage
-import com.fasterxml.jackson.annotation.JsonTypeName
 import com.netflix.spinnaker.clouddriver.security.AccessControlledAccountDefinition
 import com.netflix.spinnaker.credentials.definition.CredentialsDefinition
 import com.netflix.spinnaker.fiat.model.resources.Permissions
