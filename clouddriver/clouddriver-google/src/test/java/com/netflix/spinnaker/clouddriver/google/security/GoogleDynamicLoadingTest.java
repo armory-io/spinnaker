@@ -14,27 +14,30 @@
  * limitations under the License.
  */
 
-package com.netflix.spinnaker.clouddriver.azure.security;
+package com.netflix.spinnaker.clouddriver.google.security;
+
+import static org.mockito.Mockito.*;
 
 import com.netflix.spinnaker.clouddriver.security.CredentialsInitializerSynchronizable;
 import com.netflix.spinnaker.credentials.definition.AbstractCredentialsLoader;
+import org.junit.jupiter.api.Test;
 
-/** Helper class for testing Azure credentials functionality. */
-public class AzureTestHelper {
+public class GoogleDynamicLoadingTest {
 
-  /** Creates a CredentialsInitializerSynchronizable for testing. */
-  public static CredentialsInitializerSynchronizable createSynchronizable(
-      AbstractCredentialsLoader loader) {
-    return new CredentialsInitializerSynchronizable() {
-      @Override
-      public void synchronize() {
-        try {
-          loader.load();
-        } catch (Exception e) {
-          // In a real system, we would log this but not propagate it
-          // This allows our tests to continue even if one account fails
-        }
-      }
-    };
+  @Test
+  public void testCredentialsInitializerSynchronizableCallsLoader() {
+    // Arrange
+    AbstractCredentialsLoader mockLoader = mock(AbstractCredentialsLoader.class);
+    GoogleCredentialsInitializer initializer = new GoogleCredentialsInitializer();
+
+    CredentialsInitializerSynchronizable synchronizable =
+        initializer.googleCredentialsInitializerSynchronizable(mockLoader);
+
+    // Act
+    synchronizable.synchronize();
+
+    // Assert
+    verify(mockLoader, times(1)).load();
+    System.out.println("TEST PASSED: Google synchronize method correctly calls loader.load()");
   }
 }
