@@ -12,7 +12,6 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
  */
 
 package com.netflix.spinnaker.clouddriver.kubernetes.caching.view.provider;
@@ -56,7 +55,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary // Ensures this provider takes precedence over other Kubernetes cluster providers 
+@Primary // Ensures this provider takes precedence over other Kubernetes cluster providers
 public class KubernetesClusterProvider implements ClusterProvider<KubernetesCluster> {
   private final KubernetesCacheUtils cacheUtils;
 
