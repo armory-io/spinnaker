@@ -56,8 +56,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary // Ensures this provider takes precedence over other Kubernetes cluster providers (e.g.,
-// from Armory agent, plugins)
+@Primary // Ensures this provider takes precedence over other Kubernetes cluster providers 
 public class KubernetesClusterProvider implements ClusterProvider<KubernetesCluster> {
   private final KubernetesCacheUtils cacheUtils;
 
