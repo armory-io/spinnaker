@@ -55,6 +55,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@Primary
 public class KubernetesClusterProvider implements ClusterProvider<KubernetesCluster> {
   private final KubernetesCacheUtils cacheUtils;
 
